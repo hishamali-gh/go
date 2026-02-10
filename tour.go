@@ -12,7 +12,7 @@ func main() {
 } */
 
 // PRINT
-package main
+/* package main
 
 import "fmt"
 
@@ -26,4 +26,23 @@ func main() {
 	fmt.Println("This is what 'fmt.Println' should be used for:", a, b) // 'Println' prints its arguments, separating them with spaces, and adds a newline at the end.
 
 	fmt.Printf("This is what 'fmt.Printf' should be used for: %v, %v", b, a) // 'Printf' prints text according to a format string. It is somewhat similar to Python's f-strings, although it uses format verbs such as '%v' instead of embedded expressions. '%v' formats a value using its default representation. The supplied arguments are substituted into the format string in order.
+} */
+
+// FUNCTIONS
+package main
+
+import "fmt"
+
+// A function can take zero or more arguments.
+
+// func add(x int, y int) int { // Notice that the type comes after the variable names.
+// 	return x + y
+// }
+
+func add(x, y int) int { // When two or more consecutive named function parameters share a type, you can omit the type from all but the last.
+	return x + y
+}
+
+func main() {
+	fmt.Println(add(42, 13))
 }
