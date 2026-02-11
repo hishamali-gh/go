@@ -29,7 +29,7 @@ func main() {
 } */
 
 // FUNCTIONS
-package main
+/* package main
 
 import "fmt"
 
@@ -45,4 +45,4 @@ func add(x, y int) int { // When two or more consecutive named function paramete
 
 func main() {
 	fmt.Println(add(42, 13))
-}
+} */
