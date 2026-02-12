@@ -10,5 +10,10 @@ func main() {
 	var score float64 // 0
 	var isAlive bool // false
 
-	fmt.Println(name, age, score, isAlive)	
+	fmt.Println(name, age, score, isAlive)
+
+	// DECLARING AND INITIALIZING AT THE SAME TIME:
+	var greet string = "Hi!"
+
+	fmt.Println(greet)	
 }
