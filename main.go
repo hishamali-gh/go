@@ -15,5 +15,15 @@ func main() {
 	// DECLARING AND INITIALIZING AT THE SAME TIME:
 	var greet string = "Hi!"
 
-	fmt.Println(greet)	
+	fmt.Println(greet)
+
+	// TYPE INFERENCE:
+	// Go can figure out the type from the value.
+
+	var shoot = "POP!" // string
+	var n = 1 // int
+	var percentage = 9.11 // float64
+	var honest = true // bool
+
+	fmt.Printf("%T %T %T %T\n", shoot, n, percentage, honest)	
 }
