@@ -25,5 +25,12 @@ func main() {
 	var percentage = 9.11 // float64
 	var honest = true // bool
 
-	fmt.Printf("%T %T %T %T\n", shoot, n, percentage, honest)	
+	fmt.Printf("%T %T %T %T\n", shoot, n, percentage, honest)
+
+	// SHORT VARIABLE DECLARATION:
+	poco := "loco" // Shorter way of 'var poco = "loco"'
+
+	// NB: ":=" can only be used inside a function.
+
+	fmt.Printf("%s - %T\n", poco, poco)	
 }
