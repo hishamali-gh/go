@@ -32,5 +32,10 @@ func main() {
 
 	// NB: ":=" can only be used inside a function.
 
-	fmt.Printf("%s - %T\n", poco, poco)	
+	fmt.Printf("%s - %T\n", poco, poco)
+
+	// MULTIPLE VARIABLE DECLARATION:
+	var day, date = "My day", 17.03
+
+	fmt.Println(day, date)
 }
