@@ -259,3 +259,18 @@ func main() {
 	fmt.Println(s1)
 	fmt.Println(s2)
 } */
+
+// TYPE CONVERSION
+/* package main
+
+import "fmt"
+
+func main() {
+	x := 1
+
+	fmt.Printf("%v - %T\n", x, x)  // 1 - int
+
+	y := float32(x)
+
+	fmt.Printf("%v - %T", y, y) // 1 - float32
+} */
