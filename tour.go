@@ -185,18 +185,18 @@ func main() {
 
 // Numeric:
 // Signed Integers:
-// Hold both positive and negative whole numbers.
+/* // Hold both positive and negative whole numbers.
 
-/* int8: 8-bit (-128 to 127)
+int8: 8-bit (-128 to 127)
 int16: 16-bit (-32,768 to 32,767)
 int32: 32-bit (-2,147,483,648 to 2,147,483,647)
 int64: 64-bit (~ -9.22 * 10**18 to 9.22 * 10**18)
 int: Platform-dependent (32 bits on 32-bit systems, 64 bits on 64-bit systems). This is the standard integer type used in most Go code. */
 
 // Unsigned Integers:
-// Hold only non-negative whole numbers (0 and positive).
+/* // Hold only non-negative whole numbers (0 and positive).
 
-/* uint8: 8-bit (0 to 255)
+uint8: 8-bit (0 to 255)
 uint16: 16-bit (0 to 65,535)
 uint32: 32-bit (0 to 4,294,967,295)
 uint64: 64-bit (0 to ~1.84 * 10^19)  
@@ -204,10 +204,10 @@ uint: Platform-dependent (32 or 64 bits)
 uintptr: An unsigned integer large enough to store the uninterpreted bits of a pointer value. */
 
 // Integer Aliases:
-/* byte: Alias for uint8. Used to emphasize raw data or individual ASCII/UTF-8 bytes.
-rune: Alias for int32. Represents a single Unicode code point (characters in single quotes, e.g., 'a', '世'). */
+/* // byte: Alias for uint8. Used to emphasize raw data or individual ASCII/UTF-8 bytes.
+// rune: Alias for int32. Represents a single Unicode code point (characters in single quotes, e.g., 'a', '世').
 
-/* package main
+package main
 
 import "fmt"
 
@@ -216,18 +216,18 @@ func main() {
 } */
 
 // Floating-Point Numbers:
-// Represent numbers with fractional components (IEEE-754 standard).
+/* // Represent numbers with fractional components (IEEE-754 standard).
 
-/* float32: 32-bit floating-point (single precision).
+float32: 32-bit floating-point (single precision).
 float64: 64-bit floating-point (double precision). This is the default for floating-point literals. */
 
 // Complex Numbers:
-/* Represent numbers with real and imaginary parts.
+/* // Represent numbers with real and imaginary parts.
 
-complex64: Float32 real and imaginary parts.
-complex128: Float64 real and imaginary parts. */
+// complex64: Float32 real and imaginary parts.
+// complex128: Float64 real and imaginary parts.
 
-/* package main
+package main
 
 import "fmt"
 
@@ -241,13 +241,13 @@ func main() {
 } */
 
 // Strings (string):
-// A string is an immutable sequence of bytes, typically interpreted as UTF-8 encoded text.
+/* // A string is an immutable sequence of bytes, typically interpreted as UTF-8 encoded text.
 
-/* Zero value: "" (empty string)
-Interpreted string literal: Enclosed in double quotes "" (supports escape characters like \n, \t).
-Raw string literal: Enclosed in backticks `...` (preserves line breaks and does not process escape sequences). */
+// Zero value: "" (empty string)
+// Interpreted string literal: Enclosed in double quotes "" (supports escape characters like \n, \t).
+// Raw string literal: Enclosed in backticks `...` (preserves line breaks and does not process escape sequences).
 
-/* package main
+package main
 
 import "fmt"
 
@@ -274,3 +274,70 @@ func main() {
 
 	fmt.Printf("%v - %T", y, y) // 1 - float32
 } */
+
+// TYPE INFERENCE
+/* package main
+
+import "fmt"
+
+func main() {
+	var i = 1
+	j := "Two"
+	k := j
+
+	fmt.Printf("%v - %T\n", i, i)
+	fmt.Printf("%v - %T\n", j, j)
+	fmt.Printf("%v - %T", k, k)
+} */
+
+// CONSTANTS
+/* package main
+
+import "fmt"
+
+const pi = 3.14
+
+func main() {
+	const world = "世界"
+
+	fmt.Println("Hello", world)
+	fmt.Println("Happy", pi, "day")
+
+	const truth = true
+
+	fmt.Println("Go rules?", truth)
+} */
+
+// NUMERIC CONSTANTS
+package main
+
+import "fmt"
+
+const (
+	big = 1 << 100  // A large number; far exceeds the capacity of a 64-bit int (~2^63 - 1)
+	small = big >> 100
+)
+
+// In Go, an 'untyped numeric constant' have arbitrary, high precision at compile time.
+// Since it is untyped, it does not have a fixed memory size yet.
+
+// 'big' is an untyped integer constant (declared without an explicit type).
+// Therefore, it only adopts a concrete type when the context demands one.
+
+func needInt(x int) int {  // Expects an int (int64 on a 64-bit system)
+	return x * 10 + 1
+}
+
+func needFloat(x float64) float64 {
+	return x * 0.1
+}
+
+// The int type in Go has a fixed size limit (either 32 or 64 bits depending on the architecture).
+// Trying to force a constant that exceeds this size into an int causes a compile-time error.
+
+func main() {
+	fmt.Println(needInt(small))
+	// fmt.Println(needInt(big))  // Fails to compile: constant overflows int!
+	fmt.Println(needFloat(small))
+	fmt.Println(needFloat(big))
+}
