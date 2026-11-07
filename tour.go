@@ -309,7 +309,7 @@ func main() {
 } */
 
 // NUMERIC CONSTANTS
-package main
+/* package main
 
 import "fmt"
 
@@ -340,4 +340,40 @@ func main() {
 	// fmt.Println(needInt(big))  // Fails to compile: constant overflows int!
 	fmt.Println(needFloat(small))
 	fmt.Println(needFloat(big))
-}
+} */
+
+// FOR LOOP
+/* // Go has only one looping construct: 'for'.
+
+// The for loop components are: the init statement, the conditional expression, and the post statement (almost always 'step': increment or decrement)
+
+package main
+
+import "fmt"
+
+func main() {
+	for i := 1; i <= 10; i++ {
+		fmt.Println(i)
+	}
+
+	// The init and post statements are optional:
+	sum := 1
+
+	for ; sum <= 1000; {
+		sum += sum
+	}
+
+	fmt.Println(sum)  // 1024
+
+	// Or you can omit the semicolons themselves if it's a conditional loop ('while' loop):
+	total := 1
+
+	for total <= 1000 {
+		total += total
+	}
+
+	fmt.Println(total)  // 1024. These both mean and do the exact same thing.
+
+	// This is an infinite loop (a 'while == True' equivalent):
+	// for {}
+} */
