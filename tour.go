@@ -115,11 +115,11 @@ func main() {
 
 import "fmt"
 
-func split(sum int) (x, y int) {  // 1. x and y are 'declared' here.
-	x = sum * 4 / 9  // Notice '=' (assignment), not ':=' (declaration) (variable x already exists)
+func split(sum int) (x, y int) {  // x and y are 'declared' here.
+	x = sum * 4 / 9  // Notice '=' (assignment), not ':=' (declaration) (variable x already exists).
 	y = sum - x
 
-	return  // Naked Rturn (Returns x and y automatically)
+	return  // Naked Return (Returns x and y automatically)
 }
 
 func main() {
@@ -137,7 +137,7 @@ var c, python, java bool
 func main() {
 	var i int
 
-	fmt.Println(c, python, java, i)  // false, false, false, 0 -> The 'zero values' of each variable type
+	fmt.Println(c, python, java, i)  // false, false, false, 0 -> 'zero values' of each variable type
 } */
 
 // With initializers:
@@ -148,7 +148,7 @@ import "fmt"
 var i, j int = 1, 2  // One initalizer per variable
 
 func main() {
-	var c, python, java = true, false, "no!"  // If an initializer is provided, the type can be omitted; the variable will take the type of the initializer
+	var c, python, java = true, false, "no!"  // If an initializer is provided, the type can be omitted; the variable will take the type of the initializer.
 
 	fmt.Println(i, j, c, python, java)
 } */
@@ -187,21 +187,21 @@ func main() {
 // Signed Integers:
 /* // Hold both positive and negative whole numbers.
 
-int8: 8-bit (-128 to 127)
-int16: 16-bit (-32,768 to 32,767)
-int32: 32-bit (-2,147,483,648 to 2,147,483,647)
-int64: 64-bit (~ -9.22 * 10**18 to 9.22 * 10**18)
-int: Platform-dependent (32 bits on 32-bit systems, 64 bits on 64-bit systems). This is the standard integer type used in most Go code. */
+// int8: 8-bit (-128 to 127)
+// int16: 16-bit (-32,768 to 32,767)
+// int32: 32-bit (-2,147,483,648 to 2,147,483,647)
+// int64: 64-bit (~ -9.22 * 10**18 to 9.22 * 10**18)
+// int: Platform-dependent (32 bits on 32-bit systems, 64 bits on 64-bit systems). This is the standard integer type used in most Go code. */
 
 // Unsigned Integers:
 /* // Hold only non-negative whole numbers (0 and positive).
 
-uint8: 8-bit (0 to 255)
-uint16: 16-bit (0 to 65,535)
-uint32: 32-bit (0 to 4,294,967,295)
-uint64: 64-bit (0 to ~1.84 * 10^19)  
-uint: Platform-dependent (32 or 64 bits)  
-uintptr: An unsigned integer large enough to store the uninterpreted bits of a pointer value. */
+// uint8: 8-bit (0 to 255)
+// uint16: 16-bit (0 to 65,535)
+// uint32: 32-bit (0 to 4,294,967,295)
+// uint64: 64-bit (0 to ~1.84 * 10^19)  
+// uint: Platform-dependent (32 or 64 bits)  
+// uintptr: An unsigned integer large enough to store the uninterpreted bits of a pointer value. */
 
 // Integer Aliases:
 /* // byte: Alias for uint8. Used to emphasize raw data or individual ASCII/UTF-8 bytes.
@@ -212,14 +212,14 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printf("%v, %T", 'a', 'a')  // 97
+	fmt.Printf("%v, %T", 'a', 'a')  // 97, int32
 } */
 
 // Floating-Point Numbers:
 /* // Represent numbers with fractional components (IEEE-754 standard).
 
-float32: 32-bit floating-point (single precision).
-float64: 64-bit floating-point (double precision). This is the default for floating-point literals. */
+// float32: 32-bit floating-point (single precision).
+// float64: 64-bit floating-point (double precision). This is the default for floating-point literals. */
 
 // Complex Numbers:
 /* // Represent numbers with real and imaginary parts.
@@ -345,7 +345,7 @@ func main() {
 // FOR LOOP
 /* // Go has only one looping construct: 'for'.
 
-// The for loop components are: the init statement, the conditional expression, and the post statement (almost always 'step': increment or decrement)
+// The for loop components are: the init statement, the conditional expression, and the post statement (almost always 'step': increment or decrement).
 
 package main
 
@@ -356,6 +356,8 @@ func main() {
 		fmt.Println(i)
 	}
 
+	fmt.Println()
+
 	// The init and post statements are optional:
 	sum := 1
 
@@ -364,16 +366,42 @@ func main() {
 	}
 
 	fmt.Println(sum)  // 1024
-
+	fmt.Println()
+	
 	// Or you can omit the semicolons themselves if it's a conditional loop ('while' loop):
 	total := 1
-
+	
 	for total <= 1000 {
 		total += total
 	}
-
+	
 	fmt.Println(total)  // 1024. These both mean and do the exact same thing.
+	fmt.Println()
 
 	// This is an infinite loop (a 'while == True' equivalent):
 	// for {}
 } */
+
+// IF-ELSE
+package main
+
+import "fmt"
+
+func main() {
+	condition := false
+
+	if condition {
+		fmt.Println("Good")
+	} else {
+		fmt.Println("Bad")
+	}
+
+	fmt.Println()
+
+	// Like 'for', the 'if' statement can start with a short statement to execute before the condition—separated using a semicolon:
+	if v := 3; v >= 0 {  // 'var' is not supported; only the short syntax.
+		fmt.Println(true)
+	} else {
+		fmt.Println(false)
+	}
+}
