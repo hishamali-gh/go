@@ -199,8 +199,8 @@ func main() {
 // uint8: 8-bit (0 to 255)
 // uint16: 16-bit (0 to 65,535)
 // uint32: 32-bit (0 to 4,294,967,295)
-// uint64: 64-bit (0 to ~1.84 * 10^19)  
-// uint: Platform-dependent (32 or 64 bits)  
+// uint64: 64-bit (0 to ~1.84 * 10^19)
+// uint: Platform-dependent (32 or 64 bits)
 // uintptr: An unsigned integer large enough to store the uninterpreted bits of a pointer value. */
 
 // Integer Aliases:
@@ -235,7 +235,7 @@ func main() {
 	c := complex(2, 3)  // 2 + 3i
 
 	x := 4 + 5i
-	
+
 	fmt.Println(real(c), imag(c))  // 2, 3
 	fmt.Printf("%v, %T", x, x)  // (4+5i), complex128
 } */
@@ -367,14 +367,14 @@ func main() {
 
 	fmt.Println(sum)  // 1024
 	fmt.Println()
-	
+
 	// Or you can omit the semicolons themselves if it's a conditional loop ('while' loop):
 	total := 1
-	
+
 	for total <= 1000 {
 		total += total
 	}
-	
+
 	fmt.Println(total)  // 1024. These both mean and do the exact same thing.
 	fmt.Println()
 
@@ -383,7 +383,7 @@ func main() {
 } */
 
 // IF-ELSE
-package main
+/* package main
 
 import "fmt"
 
@@ -404,4 +404,61 @@ func main() {
 	} else {
 		fmt.Println(false)
 	}
+} */
+
+// EXERCISE: SQUARE ROOT
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+// Go has strict rules when it comes to language definitions.
+
+// 'import' is one of the four *groupable* (non-function) declaration keywords in Go: var, const, type, import.
+// Go expects each of them to be either:
+//     1. Single Declaration:
+//         - keyword spec
+
+//     2. Grouped/Factored Declaration:
+//         - keyword (spec; spec)
+//         - Or, keyword (
+//         	      spec
+//         	      spec
+//               )
+
+// After the 'import' keyword, Go expects either a single 'ImportSpec',
+// or a parenthesized group containing one or more ImportSpecs separated by semicolons.
+
+// In the official Go Language Specification, the formal grammar defines an import declaration as:
+//     ImportDecl = "import" ( ImportSpec | "(" { ImportSpec ";" } ")" )
+
+// And, an ImportSpec is defined as:
+//     ImportSpec = [Alias | "." | "_"] "import/path"
+
+// Additionally, Go has a feature called Automatic Semicolon Insertion (ASI).
+// Under the hood, Go's parser expects semicolons everywhere—just like C and Java.
+// But the Go lexer automatically inserts a ";" at the end of any line
+// that ends with a literal (like a string "fmt"), an identifier, or certain closing tokens.
+// So, manual semicolon-insertion is also not required.
+
+func sqrt(x float64) float64 {
+	z := 1.0
+
+	for i := 0; i < 10; i++ {
+		v := (math.Pow(z, 2.0) - x) / (2*z)  // Go has no exponent operator (**) as in other languages; you could use 'n * n...' for simple quadratic operations, or the math.Pow function for further needs.
+
+		if math.Abs(v) < 1e-12 {  // '1e-12' == 1 * (10 ^ -12)
+			return z
+		}
+
+		z -= v
+	}
+
+	return z
+}
+
+func main() {
+	fmt.Println(sqrt(4))
 }
